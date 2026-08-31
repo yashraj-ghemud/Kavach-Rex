@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAVACH-REX — Three models. One provable verdict.</title>
+  <meta name="description" content="KAVACH-REX is a three-model AI council that finds memory-safety bugs in C/C++ parsers, writes the patch, and cross-examines it into verified proof. Frontend prototype." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%A1%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Cinematic intro overlay -->
+  <div id="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <p class="intro-kicker">AUTONOMOUS CASE FILE · 001</p>
+      <h1 class="intro-title">KAVACH<span>—</span>REX</h1>
+      <p class="intro-sub">opening the case file&hellip;</p>
+    </div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header id="nav">
+    <a class="brand" href="#hero">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6l8-3z"/>
+        <path d="M8.5 12l2.3 2.3L15.5 9.5"/>
+      </svg>
+      KAVACH&ndash;REX
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#premise">Premise</a>
+      <a href="#council">Council</a>
+      <a href="#demo">Live demo</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#evidence">Evidence</a>
+    </nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="#demo">Run the case</a>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section id="hero">
+      <div class="orb orb-a" aria-hidden="true"></div>
+      <div class="orb orb-b" aria-hidden="true"></div>
+      <div class="orb orb-c" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <p class="eyebrow">KAVACH&ndash;REX &nbsp;//&nbsp; MEMORY-SAFETY, UNDER OATH</p>
+        <h1 class="hero-title">
+          <span class="line"><span>Find the bug.</span></span>
+          <span class="line"><span>Write the patch.</span></span>
+          <span class="line"><span>Prove it <em>in court.</em></span></span>
+        </h1>
+        <p class="hero-sub">
+          A three-model AI council that hunts a real buffer-overflow in a C parser,
+          drafts the fix, and cross-examines it into verified proof &mdash; fully automated.
+          One model proposes. Another judges. Nothing is certified on opinion.
+        </p>
+        <div class="hero-ctas">
+          <button id="heroRun" class="btn btn-primary">
+            <span class="play-tri" aria-hidden="true"></span> Run the live case
+          </button>
+          <a href="#council" class="btn btn-ghost">Meet the council</a>
+        </div>
+        <p class="hero-micro">FUZZ &rarr; TRIAGE &rarr; PATCH &rarr; CROSS-EXAM &rarr; VERIFY &rarr; CERTIFY</p>
+      </div>
+      <div class="hero-fade" aria-hidden="true"></div>
+    </section>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>FIND THE BUG &middot; WRITE THE PATCH &middot; CROSS-EXAMINE THE FIX &middot; PROVE IT WITH REAL TESTS &middot; NO MODEL GRADES ITS OWN HOMEWORK &middot;&nbsp;</span>
+        <span>FIND THE BUG &middot; WRITE THE PATCH &middot; CROSS-EXAMINE THE FIX &middot; PROVE IT WITH REAL TESTS &middot; NO MODEL GRADES ITS OWN HOMEWORK &middot;&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ===================== PREMISE ===================== -->
+    <section id="premise" class="section">
+      <div class="section-head reveal">
+        <p class="section-no">01 / THE PREMISE</p>
+        <h2>One model approving its own patch is not verification.<br/>It&rsquo;s the model agreeing with itself.</h2>
+      </div>
+      <div class="premise-grid">
+        <article class="pcard reveal" style="--d:.05s">
+          <p class="pnum">I</p>
+          <h3>Hunt</h3>
+          <p>A real mutation fuzzer hammers a C parser compiled with AddressSanitizer until it produces a genuine heap-buffer-overflow crash &mdash; then shrinks it to a 9-byte reproducer.</p>
+        </article>
+        <article class="pcard reveal" style="--d:.15s">
+          <p class="pnum">II</p>
+          <h3>Patch</h3>
+          <p>One council member writes a minimal unified diff, hard-constrained to the flagged function. Any diff touching anything else is rejected by code, not by prompt.</p>
+        </article>
+        <article class="pcard reveal" style="--d:.25s">
+          <p class="pnum">III</p>
+          <h3>Prove</h3>
+          <p>A different model family cross-examines the diff blind, then real execution decides: rebuild, re-run the crash, full regression corpus, 5&times; determinism replay.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== COUNCIL ===================== -->
+    <section id="council" class="section">
+      <div class="section-head reveal">
+        <p class="section-no">02 / THE COUNCIL</p>
+        <h2>Three models. Three checkable roles.</h2>
+        <p class="section-sub">Proposer and judge sit on different model families &mdash; that split is the safety mechanism, not decoration.</p>
+      </div>
+
+      <div class="council-grid">
+        <article class="council-card reveal" style="--acc:var(--sky-deep);--d:.05s">
+          <div class="council-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/>
+              <circle cx="12" cy="12" r="1" fill="currentColor"/>
+              <path d="M12 12l6.2-5.6"/>
+            </svg>
+          </div>
+          <div class="council-role">RECON + TRIAGE</div>
+          <h3>Scout</h3>
+          <p class="council-model">Qwen &middot; Groq</p>
+          <p class="council-desc">First on scene. Turns raw ASan crash dumps into clean structured JSON &mdash; fast and cheap, because it runs on every crash the fuzzer finds, ranking them by risk.</p>
+        </article>
+
+        <article class="council-card reveal" style="--acc:var(--amber);--d:.15s">
+          <div class="council-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13.5 3.5l7 7-2.8 2.8-7-7z"/>
+              <path d="M11.5 8.5L3.6 16.4a2.2 2.2 0 003.1 3.1l7.9-7.9"/>
+            </svg>
+          </div>
+          <div class="council-role">PATCH AUTHORING</div>
+          <h3>Smith</h3>
+          <p class="council-model">GPT-OSS &middot; Groq</p>
+          <p class="council-desc">The craftsperson. Receives the vulnerable function plus Scout&rsquo;s triage, returns a minimal unified diff. A code-level allow-list is the real firewall &mdash; out-of-scope diffs never reach review.</p>
+        </article>
+
+        <article class="council-card reveal" style="--acc:var(--violet);--d:.25s">
+          <div class="council-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 4v16"/><path d="M8 20h8"/><path d="M4 7h16"/>
+              <path d="M6 7l-2.4 5a2.9 2.9 0 004.8 0L6 7z"/>
+              <path d="M18 7l-2.4 5a2.9 2.9 0 004.8 0L18 7z"/>
+            </svg>
+          </div>
+          <div class="council-role">REVIEW + CERTIFICATION</div>
+          <h3>Judge</h3>
+          <p class="council-model">Nemotron Ultra &middot; OpenRouter</p>
+          <p class="council-desc">The reasoning-heavy seat. Plans the campaign, then reviews Smith&rsquo;s diff <strong>without ever seeing Smith&rsquo;s reasoning</strong> &mdash; fresh eyes from a different family &mdash; and issues CERTIFY or REJECT.</p>
+        </article>
+      </div>
+
+      <blockquote class="why-split reveal">
+        &ldquo;If the same model proposes and approves its own patch, &lsquo;verification&rsquo; is just the model agreeing with itself.
+        Routing proposer and reviewer to different providers is the actual safety mechanism.&rdquo;
+      </blockquote>
+    </section>
+
+    <!-- ===================== CASE FILE DEMO ===================== -->
+    <section id="demo" class="section">
+      <div class="section-head reveal">
+        <p class="section-no">03 / THE CASE FILE</p>
+        <h2>Watch three models keep each other honest.</h2>
+        <p class="section-sub">A simulated campaign, streamed live. Includes a rejection round &mdash; the moment that proves the Judge isn&rsquo;t rubber-stamping.</p>
+      </div>
+
+      <div class="caseframe reveal" id="caseframe">
+        <!-- Window bar -->
+        <div class="casebar">
+          <div class="casebar-left">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="case-id">CASE #001 &middot; parser.c:read_u32 &middot; <b id="caseStatus" class="st-standby">STANDBY</b></span>
+          </div>
+          <div class="casebar-right">
+            <div class="speed" role="group" aria-label="Playback speed">
+              <button class="speedbtn active" data-speed="1">1&times;</button>
+              <button class="speedbtn" data-speed="2">2&times;</button>
+            </div>
+            <button id="resetBtn" class="btn btn-ghost btn-sm" title="Reset the case file">Reset</button>
+            <button id="runBtn" class="btn btn-primary btn-sm">Run campaign</button>
+          </div>
+        </div>
+
+        <!-- Step strip -->
+        <div class="steps-strip" aria-hidden="true">
+          <span class="stepchip">1 &middot; Twin</span>
+          <span class="stepchip">2 &middot; Plan</span>
+          <span class="stepchip">3 &middot; Fuzz</span>
+          <span class="stepchip">4 &middot; Triage</span>
+          <span class="stepchip">5 &middot; Patch</span>
+          <span class="stepchip">6 &middot; Cross-exam</span>
+          <span class="stepchip">7 &middot; Verify</span>
+          <span class="stepchip">8 &middot; Certify</span>
+        </div>
+
+        <!-- Three-panel grid -->
+        <div class="casegrid">
+          <!-- Council strip -->
+          <aside class="council-strip" aria-label="Council status">
+            <article class="ccard" id="card-scout">
+              <div class="ccard-top">
+                <span class="cavatar av-scout" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 12l5.6-5"/></svg>
+                </span>
+                <div class="cname"><h4>Scout</h4><p>Qwen &middot; Groq</p></div>
+                <span class="pill idle" id="pill-scout">IDLE</span>
+              </div>
+              <p class="csnippet" id="snip-scout">Standing by.</p>
+            </article>
+
+            <article class="ccard" id="card-smith">
+              <div class="ccard-top">
+                <span class="cavatar av-smith" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 4l6.5 6.5-2.6 2.6L10.9 6.6z"/><path d="M11.6 8.9l-7.5 7.5a2 2 0 002.9 2.9l7.5-7.5"/></svg>
+                </span>
+                <div class="cname"><h4>Smith</h4><p>GPT-OSS &middot; Groq</p></div>
+                <span class="pill idle" id="pill-smith">IDLE</span>
+              </div>
+              <p class="csnippet" id="snip-smith">Standing by.</p>
+            </article>
+
+            <article class="ccard" id="card-judge">
+              <div class="ccard-top">
+                <span class="cavatar av-judge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16"/><path d="M8 20h8"/><path d="M5 7h14"/><path d="M6.5 7l-2.2 4.6a2.7 2.7 0 004.4 0L6.5 7z"/><path d="M17.5 7l-2.2 4.6a2.7 2.7 0 004.4 0L17.5 7z"/></svg>
+                </span>
+                <div class="cname"><h4>Judge</h4><p>Nemotron Ultra</p></div>
+                <span class="pill idle" id="pill-judge">IDLE</span>
+              </div>
+              <p class="csnippet" id="snip-judge">Standing by.</p>
+            </article>
+
+            <p class="strip-note">During cross-exam, Smith dims &mdash; the Judge reviews the diff blind.</p>
+          </aside>
+
+          <!-- Case log -->
+          <div class="caselog">
+            <div class="caselog-head">
+              <span>CASE FILE &mdash; RUNNING LOG</span>
+              <span class="blink-dot" aria-hidden="true"></span>
+            </div>
+            <div class="caselog-body" id="log" aria-live="polite">
+              <div class="entry">
+                <div class="entry-meta"><span class="t">T+00:00</span><span class="tag tag-system">SYSTEM</span></div>
+                <p class="entry-text">Case file opened. Press <strong>Run campaign</strong> to begin the hunt.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Verdict -->
+          <aside class="verdict" aria-label="Verdict">
+            <h4>VERDICT</h4>
+            <div class="verdict-empty" id="verdictEmpty">
+              <div class="seal-placeholder" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10v-6l8-3z"/></svg>
+              </div>
+              <p>Awaiting real verification&hellip;</p>
+              <small>This card only fills after the patched binary survives live tests &mdash; never on a model&rsquo;s opinion alone.</small>
+            </div>
+            <div class="verdict-body hidden" id="verdictBody">
+              <div class="stamp" id="stamp">VERIFIED</div>
+              <dl class="vfields">
+                <div class="vfield"><dt>Proof status</dt><dd id="v-status">&mdash;</dd></div>
+                <div class="vfield"><dt>Regression corpus</dt><dd id="v-regress">&mdash;</dd></div>
+                <div class="vfield"><dt>Determinism replay</dt><dd id="v-det">&mdash;</dd></div>
+                <div class="vfield"><dt>Residual risk</dt><dd id="v-risk">&mdash;</dd></div>
+              </dl>
+              <button id="downloadBtn" class="btn btn-primary btn-sm">Download proof bundle</button>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Diff viewer -->
+        <div class="diffwrap" id="diffwrap">
+          <button class="diffhead" id="diffToggle" aria-expanded="false">
+            <span class="chev" aria-hidden="true"></span>
+            PATCH DIFF &mdash; <span id="diffState">available after certification</span>
+          </button>
+          <div class="diffbody" id="diffbody">
+            <pre><span class="d-meta">--- a/parser.c
++++ b/parser.c</span>
+<span class="d-hunk">@@ -211,6 +211,10 @@ uint32_t read_u32(Buffer *b) {</span>
+<span class="d-ctx">     uint32_t v;</span>
+<span class="d-del">-    memcpy(&amp;v, b-&gt;ptr + b-&gt;pos, 4);</span>
+<span class="d-add">+    if (b-&gt;pos + 4 &gt; b-&gt;len) {</span>
+<span class="d-add">+        parser_error(b, ERR_SHORT_READ);</span>
+<span class="d-add">+        return 0;</span>
+<span class="d-add">+    }</span>
+<span class="d-add">+    memcpy(&amp;v, b-&gt;ptr + b-&gt;pos, 4);</span>
+<span class="d-ctx">     b-&gt;pos += 4;</span>
+<span class="d-ctx">     return le32toh(v);</span>
+<span class="d-hunk"> }</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="demo-note reveal">Prototype note: this demo streams a scripted campaign in your browser &mdash; the real pipeline runs the same 8 steps against a live Docker + ASan target.</p>
+    </section>
+
+    <!-- ===================== PIPELINE ===================== -->
+    <section id="pipeline" class="section">
+      <div class="section-head reveal">
+        <p class="section-no">04 / THE PIPELINE</p>
+        <h2>Eight steps. Every AI call signed by its model.</h2>
+      </div>
+      <div class="pipe-grid">
+        <article class="pipe-card reveal" style="--d:.00s"><span class="pipe-no">1</span><h3>Twin build</h3><p>Docker container, target compiled with ASan, corpora mounted.</p><span class="pipe-tag tag-system">NO LLM</span></article>
+        <article class="pipe-card reveal" style="--d:.06s"><span class="pipe-no">2</span><h3>Plan</h3><p>One planning call sets invariants and the attempt budget.</p><span class="pipe-tag tag-judge">JUDGE</span></article>
+        <article class="pipe-card reveal" style="--d:.12s"><span class="pipe-no">3</span><h3>Fuzz</h3><p>Real mutation loop until crash &mdash; then delta-debug to a minimal reproducer.</p><span class="pipe-tag tag-system">NO LLM</span></article>
+        <article class="pipe-card reveal" style="--d:.18s"><span class="pipe-no">4</span><h3>Triage</h3><p>Raw ASan dump structured into JSON, crashes ranked by risk.</p><span class="pipe-tag tag-scout">SCOUT</span></article>
+        <article class="pipe-card reveal" style="--d:.24s"><span class="pipe-no">5</span><h3>Patch</h3><p>Minimal unified diff, allow-list enforced in code, not prompting.</p><span class="pipe-tag tag-smith">SMITH</span></article>
+        <article class="pipe-card reveal" style="--d:.30s"><span class="pipe-no">6</span><h3>Cross-exam</h3><p>Blind review of the diff against the crash. REJECT bounces back to step 5 &mdash; max 2 attempts.</p><span class="pipe-tag tag-judge">JUDGE</span></article>
+        <article class="pipe-card reveal" style="--d:.36s"><span class="pipe-no">7</span><h3>Verify</h3><p>Rebuild, re-run crash input, full regression corpus, 5&times; replay. Ground truth.</p><span class="pipe-tag tag-system">NO LLM</span></article>
+        <article class="pipe-card reveal" style="--d:.42s"><span class="pipe-no">8</span><h3>Certify</h3><p>Final residual-risk note and proof status. Advisory until now &mdash; final here.</p><span class="pipe-tag tag-judge">JUDGE</span></article>
+      </div>
+    </section>
+
+    <!-- ===================== EVIDENCE ===================== -->
+    <section id="evidence" class="section">
+      <div class="section-head reveal">
+        <p class="section-no">05 / THE EVIDENCE</p>
+        <h2>An audit trail you can actually read.</h2>
+      </div>
+      <div class="ev-grid">
+        <div class="ev-copy reveal">
+          <p>Every campaign ends with a flat JSON evidence ledger. Its heart is the <code>council_calls</code> array &mdash; a timestamped record proving the proposer and the reviewer were genuinely different models, not one model roleplaying both.</p>
+          <ul class="ev-points">
+            <li>Every LLM call tagged with agent, model and role</li>
+            <li>Rejection rounds logged, not hidden</li>
+            <li>Reproducer, diff, regression and replay results attached</li>
+            <li>Residual risk stated in writing &mdash; honesty as a feature</li>
+          </ul>
+        </div>
+        <div class="ev-code reveal" style="--d:.15s">
+<pre>{
+  "campaign_id": "001",
+  "target": "parser.c:read_u32",
+<span class="lh">  "council_calls": [
+    { "agent": "Judge", "model": "nemotron-ultra",  "role": "plan" },
+    { "agent": "Scout", "model": "qwen-groq",       "role": "triage" },
+    { "agent": "Smith", "model": "gpt-oss-groq",    "role": "patch", "attempt": 1 },
+    { "agent": "Judge", "model": "nemotron-ultra",  "role": "cross_exam", "verdict": "REJECT" },
+    { "agent": "Smith", "model": "gpt-oss-groq",    "role": "patch", "attempt": 2 },
+    { "agent": "Judge", "model": "nemotron-ultra",  "role": "cross_exam", "verdict": "APPROVE" },
+    { "agent": "Judge", "model": "nemotron-ultra",  "role": "certify" }
+  ],</span>
+  "reproducer": { "minimized_size_bytes": 9 },
+  "regression": { "total": 24, "passed": 24 },
+  "replay_determinism": { "runs": 5, "consistent": true },
+  "residual_risk_note": "sibling parse functions not yet scanned",
+  "proof_status": "VERIFIED"
+}</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <p><strong>KAVACH&ndash;REX</strong> &mdash; hackathon prototype. This page is a frontend demo; pipeline events are simulated in-browser.</p>
+      <p class="foot-mono">FIND &middot; PATCH &middot; CROSS-EXAMINE &middot; PROVE &mdash; 2026</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
